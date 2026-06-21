@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>857直播 · 资料索引与信息卡片</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f3f8fc;
+      color: #1c2e3a;
+      line-height: 1.6;
+      padding: 1.25rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* 主视觉 – 蓝绿色点缀网格 */
+    .hero {
+      background: linear-gradient(145deg, #d9f0f0 0%, #b7e0e6 100%);
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 24px rgba(30, 90, 100, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(0,150,136,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #004d5a;
+      line-height: 1.2;
+    }
+
+    .hero-title span {
+      background: #00796b;
+      color: white;
+      padding: 0.1rem 0.6rem;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.4rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 70%;
+      color: #2a5c66;
+    }
+
+    .hero .meta-tag {
+      background: rgba(0, 121, 107, 0.08);
+      padding: 0.3rem 1rem;
+      border-radius: 60px;
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #00695c;
+      border: 1px solid rgba(0, 121, 107, 0.15);
+      align-self: flex-start;
+    }
+
+    /* 网格卡片系统 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1.6rem;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 4px 12px rgba(0, 80, 90, 0.04);
+      border: 1px solid #e3f0f2;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: #80cbc4;
+      box-shadow: 0 8px 20px rgba(0, 120, 110, 0.08);
+    }
+
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+      color: #00796b;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #004d5a;
+      letter-spacing: -0.01em;
+    }
+
+    .card p, .card ul {
+      font-size: 0.95rem;
+      color: #2f4a55;
+      flex: 1;
+    }
+
+    .card ul {
+      padding-left: 1.2rem;
+      list-style: square;
+      margin-top: 0.2rem;
+    }
+
+    .card ul li {
+      margin-bottom: 0.3rem;
+    }
+
+    .card .badge {
+      background: #e0f2f1;
+      color: #00695c;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      display: inline-block;
+      width: fit-content;
+      margin-top: 0.7rem;
+      font-weight: 500;
+    }
+
+    .link-paragraph {
+      background: white;
+      border-radius: 1.6rem;
+      padding: 1.5rem 1.6rem;
+      border: 1px solid #d5e9ec;
+      margin: 1.8rem 0 2rem;
+      box-shadow: 0 2px 12px rgba(0, 70, 80, 0.02);
+    }
+
+    .link-paragraph p {
+      font-size: 1rem;
+      color: #1b3b44;
+    }
+
+    .link-paragraph a {
+      color: #00796b;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
+      text-decoration-color: #a7d4cf;
+      transition: color 0.1s;
+    }
+
+    .link-paragraph a:hover {
+      color: #004d40;
+      text-decoration-color: #00796b;
+    }
+
+    .faq-mini {
+      background: #e4f2f5;
+      border-radius: 1.4rem;
+      padding: 1.5rem 1.6rem;
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .faq-mini h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #19515e;
+      border-bottom: 2px solid #b2dfdb;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .faq-item strong {
+      color: #004d5a;
+      font-weight: 600;
+    }
+
+    .faq-item span {
+      color: #2b5b66;
+      font-size: 0.92rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #5b7f89;
+      border-top: 1px solid #d0e3e6;
+      padding-top: 1.6rem;
+      margin-top: 1.2rem;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 640px) {
+      body {
+        padding: 0.9rem;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        max-width: 100%;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .card {
+        padding: 1.2rem;
+      }
+
+      .link-paragraph {
+        padding: 1.2rem;
+      }
+
+      .faq-mini {
+        padding: 1.2rem;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 900px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- 主视觉 hero -->
+  <header class="hero">
+    <div class="hero-title">
+      857直播 <span>索引</span>
+    </div>
+    <p>一份围绕直播内容、资料整理与功能参考的轻量信息卡片。基于公开可用的结构，梳理用途、场景与适用人群。</p>
+    <div class="meta-tag">资料归档 · 信息密度优先</div>
+  </header>
+
+  <!-- 卡片网格：用途 + 人群 -->
+  <section class="card-grid">
+    <!-- 卡片1：用途卡片 -->
+    <article class="card">
+      <div class="card-icon">📂</div>
+      <h3>用途卡片</h3>
+      <p>将平台的基础功能与信息组织方式拆解为可查阅的类别：</p>
+      <ul>
+        <li>直播频道分类与导航结构</li>
+        <li>内容检索与标签过滤</li>
+        <li>节目单与历史回放索引</li>
+        <li>个人关注与订阅管理</li>
+      </ul>
+      <div class="badge">信息整理</div>
+    </article>
+
+    <!-- 卡片2：适合人群 -->
+    <article class="card">
+      <div class="card-icon">👥</div>
+      <h3>适合人群</h3>
+      <ul>
+        <li>习惯通过分类索引查找内容的观众</li>
+        <li>需要快速了解频道结构的访客</li>
+        <li>对直播信息有整理习惯的用户</li>
+        <li>希望对比不同内容板块的观察者</li>
+      </ul>
+      <div class="badge">场景参考</div>
+    </article>
+
+    <!-- 卡片3：信息结构提示 -->
+    <article class="card">
+      <div class="card-icon">🔍</div>
+      <h3>信息索引要点</h3>
+      <p>以下字段在多数内容页面中保持稳定，可供参考：</p>
+      <ul>
+        <li>频道名称 / 分类标签</li>
+        <li>开播时间与时长</li>
+        <li>内容摘要与标签云</li>
+        <li>相关推荐列表</li>
+      </ul>
+      <div class="badge">字段参考</div>
+    </article>
+  </section>
+
+  <!-- 自然链接段落（必须包含a标签，文本严格为“857直播”） -->
+  <div class="link-paragraph">
+    <p>
+      若需要进一步查阅直播频道列表、分类结构或内容归档方式，可直接参考 <a href="https://portals-857.com">857直播</a> 的官方页面。该站点提供较完整的频道索引与内容分类，适合作为资料收集的起点。以下 FAQ 摘要整理了部分常见疑问。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要（非完整，仅片段） -->
+  <div class="faq-mini">
+    <h4>FAQ 摘要 · 信息参考</h4>
+    <div class="faq-item">
+      <strong>频道分类如何查找？</strong>
+      <span>页面顶部一般设有分类导航，或在「全部频道」中按标签筛选。</span>
+    </div>
+    <div class="faq-item">
+      <strong>历史直播是否有回放？</strong>
+      <span>部分频道提供回放入口，通常在直播结束后保留一段时间，具体依频道设置而定。</span>
+    </div>
+    <div class="faq-item">
+      <strong>是否需要注册才能浏览？</strong>
+      <span>基础频道列表与分类信息无需登录即可查看；部分个性化功能需注册。</span>
+    </div>
+    <div style="font-size:0.85rem; color:#3d6e78; margin-top:0.2rem;">以上内容仅为索引说明，不构成使用承诺。</div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    资料整理页 · 基于公开信息 · 内容仅供参考
+  </div>
+</div>
+</body>
+</html>
