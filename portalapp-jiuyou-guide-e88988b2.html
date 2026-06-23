@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九游娱乐 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 0 1rem 3rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            margin: 2.5rem 0 2rem;
+            padding: 3.5rem 2.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eaeef2;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: #0b1a2b;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(145deg, #1f4b8c, #2e6cb5);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 1.2rem;
+            color: #3f4f63;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #eef3f9;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            border: 1px solid #dce3ec;
+            color: #1e3b5c;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== 卡片通用 ===== */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8ef;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+            color: #13273f;
+            border-left: 4px solid #2b6a9e;
+            padding-left: 1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        /* ===== 优势区 ===== */
+        .advantage-item {
+            background: #f9fafc;
+            padding: 1.5rem 1.8rem;
+            border-radius: 16px;
+            border: 1px solid #eaeef3;
+        }
+
+        .advantage-item h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #1e3b5c;
+        }
+
+        .advantage-item p {
+            font-size: 0.95rem;
+            color: #3e536a;
+        }
+
+        /* ===== 说明区（加长段落） ===== */
+        .explain-text {
+            font-size: 1rem;
+            color: #2b3f55;
+        }
+
+        .explain-text p {
+            margin-bottom: 1.2rem;
+        }
+
+        .explain-text strong {
+            color: #1a3f64;
+            font-weight: 500;
+        }
+
+        .inline-link {
+            color: #1e5b8e;
+            text-decoration: none;
+            border-bottom: 1px solid #b7cddf;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #1e5b8e;
+        }
+
+        /* ===== FAQ 摘要 ===== */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 2rem;
+            margin: 1rem 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px dashed #dce3ec;
+            padding-bottom: 0.9rem;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #102b42;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #4d627b;
+        }
+
+        /* ===== 底部 ===== */
+        .footer-links {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #dde3eb;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem 2.5rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #556b82;
+        }
+
+        .footer-links a {
+            color: #2a5173;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #2a5173;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #6c7f96;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 820px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid-2,
+            .grid-3,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .body {
+                padding: 0 0.5rem 2rem;
+            }
+
+            .hero {
+                margin-top: 1.5rem;
+                padding: 2rem 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Hero -->
+        <div class="hero">
+            <h1>关于 <span>九游娱乐</span> 的站点说明</h1>
+            <p>一份面向访问者的导览页，旨在清晰呈现平台定位、服务特点以及日常使用中常见的问题摘要。</p>
+            <div class="tagline">基于公开信息整理 · 持续更新</div>
+        </div>
+
+        <!-- 优势区：用卡片网格 -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2 class="section-title">平台核心优势</h2>
+            <div class="grid-3">
+                <div class="advantage-item">
+                    <h3>内容聚合</h3>
+                    <p>整合多种线上娱乐与资讯入口，为用户提供集中的内容访问路径，减少跳转成本。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>界面体验</h3>
+                    <p>采用轻量化设计，兼顾信息密度与视觉舒适度，在各类终端上均能快速响应。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>持续迭代</h3>
+                    <p>团队保持对功能模块的定期更新，根据用户反馈优化使用流程与信息结构。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 说明区：站点介绍与可信说明 -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2 class="section-title">站点定位与可信说明</h2>
+            <div class="explain-text">
+                <p>
+                    <strong>九游娱乐</strong> 是一个以在线娱乐内容聚合为主要方向的平台，通过统一的界面将不同类型的休闲资源整理归类。平台本身并不直接提供游戏或博彩服务，而是作为信息呈现与导航工具，引导用户找到经过筛选的第三方合作方内容。
+                </p>
+                <p>
+                    在可信度方面，该站采用标准 HTTPS 连接，并对所有外跳链接进行基础安全检查。平台运营方定期审查合作内容的合规性，确保所展示的入口符合当地法规及平台内容政策。用户可以在站内找到关于隐私处理、联系渠道以及常见问题的说明，这些细节均以清晰的方式陈列在页脚与辅助菜单中。
+                </p>
+                <p>
+                    若你想直接了解平台当前的主页结构与服务入口，可以前往 <a href="https://portalapp-jiuyou.com" class="inline-link">九游娱乐</a> 查看完整界面。建议新用户先浏览“帮助”或“关于”板块，以便更好地利用站内功能。
+                </p>
+            </div>
+        </div>
+
+        <!-- 场景 + 提示 混合区（两列） -->
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="font-weight: 500; font-size: 1.3rem; margin-bottom: 1rem; color: #13273f;">常见使用场景</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #edf1f6; display: flex; gap: 0.6rem;">
+                        <span style="color: #2b6a9e; font-weight: 500;">·</span> 每日浏览推荐类别，发现新的休闲内容
+                    </li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #edf1f6; display: flex; gap: 0.6rem;">
+                        <span style="color: #2b6a9e; font-weight: 500;">·</span> 通过分类导航快速定位特定类型的页面
+                    </li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #edf1f6; display: flex; gap: 0.6rem;">
+                        <span style="color: #2b6a9e; font-weight: 500;">·</span> 查看平台公告与内容更新日志
+                    </li>
+                    <li style="padding: 0.5rem 0; display: flex; gap: 0.6rem;">
+                        <span style="color: #2b6a9e; font-weight: 500;">·</span> 使用站内搜索过滤感兴趣的条目
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="font-weight: 500; font-size: 1.3rem; margin-bottom: 1rem; color: #13273f;">使用提示</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #edf1f6; display: flex; gap: 0.6rem;">
+                        <span style="color: #2b6a9e; font-weight: 500;">·</span> 部分外部链接可能需要注册对应服务
+                    </li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #edf1f6; display: flex; gap: 0.6rem;">
+                        <span style="color: #2b6a9e; font-weight: 500;">·</span> 建议保持浏览器与系统为最新版本
+                    </li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #edf1f6; display: flex; gap: 0.6rem;">
+                        <span style="color: #2b6a9e; font-weight: 500;">·</span> 如遇加载异常，可尝试清除缓存或更换时段
+                    </li>
+                    <li style="padding: 0.5rem 0; display: flex; gap: 0.6rem;">
+                        <span style="color: #2b6a9e; font-weight: 500;">·</span> 未成年人应在监护人陪同下使用线上服务
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2 class="section-title">FAQ 摘要</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="q">Q: 是否需要注册才能浏览站内内容？</div>
+                    <div class="a">大部分板块可直接访问，部分功能（如收藏、评论）可能需要创建账号。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="q">Q: 平台是否收集个人数据？</div>
+                    <div class="a">仅收集基本的浏览统计数据，详细说明见隐私条款页面。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="q">Q: 如何报告链接失效或内容问题？</div>
+                    <div class="a">可通过页面底部的“联系反馈”入口提交信息，运营团队定期处理。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="q">Q: 内容更新频率如何？</div>
+                    <div class="a">分类目录每月更新，重要公告与推荐内容每周刷新。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部链接 -->
+        <div class="footer-links">
+            <a href="https://portalapp-jiuyou.com">九游娱乐</a>
+            <a href="#">隐私政策</a>
+            <a href="#">服务条款</a>
+            <a href="#">联系反馈</a>
+            <span>© 2025 · 介绍页</span>
+        </div>
+        <div class="footer-note">
+            本页面为独立的介绍性着陆页，所有描述均基于公开信息整理。
+        </div>
+
+    </div>
+</body>
+</html>
